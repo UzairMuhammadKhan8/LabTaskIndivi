@@ -5,12 +5,13 @@
     <title>Vue.js Pet Depot</title>
     <script src="https://unpkg.com/vue"></script>
     <script src="products.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="row">
-        <div id="app">
+    <div id="container"></div>
+      <div id="app">
             <header>
                 <h1 v-text="sitename"></h1>
                 <!-- v-if="showCheckout == 0" -->
@@ -31,7 +32,11 @@
 
                 </table>
             </header>
+            
+     
             <main>
+                <div class="row" >
+                    <div class="col-lg-4 md-offset-6"> 
                 <div v-if='showProduct'>
                     <table>
                         <td><span>SortByName<input type="radio" name="a"
@@ -49,7 +54,10 @@
                         <td><span>DESCENDING<input type="radio" name="a" v-on:click="sorteddesc(products.subject)"></span>
                         </td>
                     </table>
-
+                </div>
+                </div>
+                <div class="col-md-3">
+                
                     <div v-for="product in products">
                         <h2 v-text="product.subject"></h2>
                         <figure>
@@ -68,6 +76,7 @@
                         
 
                     </div>
+                </div>
                 </div>
                 <div v-else>
                     <h2>Checkout</h2>
@@ -126,7 +135,8 @@
                 </div>
             </main>
         </div>
-    </div>
+    
+</div>
     <script type="text/javascript">
         var webstore = new Vue({
             el: '#app',
