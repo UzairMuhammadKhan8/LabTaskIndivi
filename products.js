@@ -1,9 +1,9 @@
-
 let arr = [
     {
       "id": 1001,
       "subject": "Cat Food ddd",
-      "location": "A 25 pound bag of <em>irresistible</em>, organic goodness for your cat.",
+      "description": "A 25 pound bag of irresistible, organic goodness for your cat.",
+      "location": "DUBAI!",
       "price": 20.00,
       "image": "C://Users/hp/labtask/images/catimg.jpg",
       "availableInventory": 10,
@@ -12,7 +12,8 @@ let arr = [
     {
       "id": 1002,
       "subject": "Yarn",
-      "location": "Yarn your cat can play with for a very <strong>long</strong> time!",
+      "description": "Yarn your cat can play with for a very long time!",
+      "location": "DUBAI!",
       "price": 2.99,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
       "availableInventory": 7,
@@ -21,7 +22,8 @@ let arr = [
     {
       "id": 1003,
       "subject": "Kitty Litter",
-      "location": "Premium kitty litter for your cat.",
+      "description": "Premium kitty litter for your cat.",
+      "location": "DUBAI!",
       "price": 11.00,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
       "availableInventory": 99,
@@ -30,7 +32,8 @@ let arr = [
     {
       "id": 1004,
       "subject": "Cat House",
-      "location": "A place for your cat to play!",
+      "description": "A place for your cat to play!",
+      "location": "DUBAI!",
       "price": 7.99,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
       "availableInventory": 11,
@@ -40,7 +43,8 @@ let arr = [
     {
       "id": 1005,
       "subject": "Laser Pointer",
-      "location": "Drive your cat crazy with this <em>amazing</em> product.",
+      "description": "Drive your cat crazy with this amazing product.",
+      "location": "DUBAI!",
       "price": 49.99,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
       "availableInventory": 25,
@@ -88,7 +92,7 @@ let arr = [
       },
       {
         "id": 1010,
-        "title": "Cat House",
+        "subject": "zza",
         "description": "A place for your cat to play!",
         "location": "AJMAN",
         "price": 7.99,

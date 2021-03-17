@@ -40,9 +40,14 @@
                     </tr>
 
                     <tr>
-                        <td><span>availableInventory<input type="radio" name="a"
+                        <td><span>SortByInventory<input type="radio" name="a"
                                     v-on:click="sortedinventory(products.availableInventory)"></span></td>
                     </tr>
+                    <tr>
+                        <td><span>SortBYLocation<input type="radio" name="a"
+                                    v-on:click="sortedlocation(products.location)"></span></td>
+                    </tr>
+
                     <tr>
                         <td><span>ASCENDING<input type="radio" name="a"
                                     v-on:click="sortedascending(products.subject)"></span>
@@ -60,6 +65,7 @@
                     <figure>
                         <img v-bind:src="product.image">
                     </figure>
+                    <p>Description:{{product.description}}</p>
                     <p>Location:{{product.location}}</p>
                     <p>Price: {{product.price}}</p>
                     <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
@@ -215,6 +221,19 @@
                         if (a.availableInventory > b.availableInventory)
                             return 1;
                         if (a.availableInventory < b.availableInventory)
+                            return -1;
+                        return 0;
+
+
+                    }
+                    return this.products.sort(compare);
+
+                },
+                sortedlocation(abcde) {
+                    function compare(a, b) {
+                        if (a.location > b.location)
+                            return 1;
+                        if (a.location < b.location)
                             return -1;
                         return 0;
 
