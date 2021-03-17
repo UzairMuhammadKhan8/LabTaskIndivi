@@ -23,7 +23,7 @@
                 </button>
                 <table>
 
-                    
+
 
                     <div v-for="product in products">
                     </div>
@@ -33,19 +33,22 @@
             <main>
                 <div v-if='showProduct'>
                     <table>
-                        <td><span>SortByName<input type="radio" name="a" v-on:click="sortedtitle(products.title)"></span>
+                        <td><span>SortByName<input type="radio" name="a"
+                                    v-on:click="sortedtitle(products.title)"></span>
                         </td>
-                        <td><span>SortByPrice<input type="radio" name="a" v-on:click="sortedprice(products.price)"></span>
+                        <td><span>SortByPrice<input type="radio" name="a"
+                                    v-on:click="sortedprice(products.price)"></span>
                         </td>
-    
+
                         <td><span>availableInventory<input type="radio" name="a"
                                     v-on:click="sortedinventory(products.availableInventory)"></span></td>
-                        <td><span>ASCENDING<input type="radio" name="a" v-on:click="sortedascending(products.title)"></span>
+                        <td><span>ASCENDING<input type="radio" name="a"
+                                    v-on:click="sortedascending(products.title)"></span>
                         </td>
                         <td><span>DESCENDING<input type="radio" name="a" v-on:click="sorteddesc(products.title)"></span>
                         </td>
                     </table>
-                    
+
                     <div v-for="product in products">
                         <h2 v-text="product.title"></h2>
                         <figure>
@@ -55,7 +58,7 @@
                         <p>Price: {{product.price}}</p>
                         <p>Available stock: {{product.availableInventory}}</p>
 
-                        
+
                         <button @click="display = true" v-on:click='addToCart(product)' v-if='canAddToCart(product)'
                             v-if="addToCart.v-on:click">Add to cart</button>
 
@@ -182,7 +185,7 @@
 
 
                 },
-                
+
                 sortedProducts(abcd) {
                     //let productsArray = this.products.slice(0);
                     // let productsArray1 =this.products.slice(0,10);
@@ -194,12 +197,12 @@
                         return 0;
 
 
-                        }
-                        return this.products.sort(compare);
+                    }
+                    return this.products.sort(compare);
 
-                    },
-                    sortedtitle(abcde) {
-                    function compare(a , b) {
+                },
+                sortedtitle(abcde) {
+                    function compare(a, b) {
                         if (a.title > b.title)
                             return 1;
                         if (a.title < b.title)
@@ -207,11 +210,11 @@
                         return 0;
 
 
-                        }
-                        return this.products.sort(compare);
+                    }
+                    return this.products.sort(compare);
 
-                    },
-                    sortedinventory(abcde) {
+                },
+                sortedinventory(abcde) {
                     function compare(a, b) {
                         if (a.availableInventory > b.availableInventory)
                             return 1;
@@ -224,8 +227,8 @@
                     return this.products.sort(compare);
 
                 },
-                    sortedprice(abcde) {
-                    function compare(a , b) {
+                sortedprice(abcde) {
+                    function compare(a, b) {
                         if (a.price > b.price)
                             return 1;
                         if (a.price < b.price)
@@ -233,12 +236,12 @@
                         return 0;
 
 
-                        }
-                        return this.products.sort(compare);
+                    }
+                    return this.products.sort(compare);
 
-                    },
-                    sortedascending(abcde) {
-                    function compare(a,b) {
+                },
+                sortedascending(abcde) {
+                    function compare(a, b) {
                         if (a.title < b.title)
                             return -1;
                         if (a.title > b.title)
@@ -246,12 +249,12 @@
                         return 0;
 
 
-                        }
-                        return this.products.sort(compare);
+                    }
+                    return this.products.sort(compare);
 
-                    },
-                    sorteddesc(abcde) {
-                    function compare(a,b) {
+                },
+                sorteddesc(abcde) {
+                    function compare(a, b) {
                         if (a.title < b.title)
                             return 1;
                         if (a.title > b.title)
@@ -259,12 +262,12 @@
                         return 0;
 
 
-                        }
-                        return this.products.sort(compare);
+                    }
+                    return this.products.sort(compare);
 
-                    },
+                },
 
-  
+
                 showCheckout() {
                     // console.log(this.showProduct);
                     this.showProduct = this.showProduct ? false : true;
@@ -305,16 +308,16 @@
             },
 
 
-                // get(products) {
-                //     product = this.products;
-                //     for (productsArray in title) {
-                //         return this.productsArray.sort(compare);
-                //     }
-                //     return this.productsArray.sort(compare);
-                // },
+            // get(products) {
+            //     product = this.products;
+            //     for (productsArray in title) {
+            //         return this.productsArray.sort(compare);
+            //     }
+            //     return this.productsArray.sort(compare);
+            // },
 
-              
-            
+
+
         });
 
 
