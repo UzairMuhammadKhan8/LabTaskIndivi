@@ -52,11 +52,11 @@ let arr = [
     },
     {
         "id": 1006,
-        "subject": "Cat House",
-        "description": "A place for your cat to play!",
+        "subject": "Whiskas Chicken in Gravy Cat Food ",
+        "description": "Actual product may slightly vary from the catalog due to product manufacturing",
         "location": "DUBAI!",
         "price": 7.99,
-        "image": "C://Users/hp/firsttask-git/catimg.jpg",
+        "image": "C://Users/hp/LabTaskIndivi/images/whiskas.jpg",
         "availableInventory": 11,
         "rating": 5
       },
