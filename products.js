@@ -1,7 +1,7 @@
 let arr = [
     {
       "id": 1001,
-      "title": "Cat Food ddd",
+      "subject": "Cat Food ddd",
       "location": "A 25 pound bag of <em>irresistible</em>, organic goodness for your cat.",
       "price": 20.00,
       "image": "C://Users/hp/labtask/images/catimg.jpg",
@@ -10,7 +10,7 @@ let arr = [
     },
     {
       "id": 1002,
-      "title": "Yarn",
+      "subject": "Yarn",
       "location": "Yarn your cat can play with for a very <strong>long</strong> time!",
       "price": 2.99,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -19,7 +19,7 @@ let arr = [
     },
     {
       "id": 1003,
-      "title": "Kitty Litter",
+      "subject": "Kitty Litter",
       "location": "Premium kitty litter for your cat.",
       "price": 11.00,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -28,7 +28,7 @@ let arr = [
     },
     {
       "id": 1004,
-      "title": "Cat House",
+      "subject": "Cat House",
       "location": "A place for your cat to play!",
       "price": 7.99,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -38,7 +38,7 @@ let arr = [
     
     {
       "id": 1005,
-      "title": "Laser Pointer",
+      "subject": "Laser Pointer",
       "location": "Drive your cat crazy with this <em>amazing</em> product.",
       "price": 49.99,
       "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -47,7 +47,7 @@ let arr = [
     },
     {
         "id": 1006,
-        "title": "Cat House",
+        "subject": "Cat House",
         "location": "A place for your cat to play!",
         "price": 7.99,
         "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -56,7 +56,7 @@ let arr = [
       },
       {
         "id": 1007,
-        "title": "Cat House",
+        "subject": "Cat House",
         "description": "A place for your cat to play!",
         "price": 7.99,
         "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -65,7 +65,7 @@ let arr = [
       },
       {
         "id": 1008,
-        "title": "Cat House",
+        "subject": "Cat House",
         "description": "A place for your cat to play!",
         "price": 7.99,
         "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -74,7 +74,7 @@ let arr = [
       },
       {
         "id": 1009,
-        "title": "Cat House",
+        "subject": "Cat House",
         "description": "A place for your cat to play!",
         "price": 7.99,
         "image": "C://Users/hp/firsttask-git/catimg.jpg",
@@ -83,7 +83,7 @@ let arr = [
       },
       {
         "id": 1010,
-        "title": "Cat House",
+        "subject": "Cat House",
         "description": "A place for your cat to play!",
         "price": 7.99,
         "image": "C://Users/hp/firsttask-git/catimg.jpg",
