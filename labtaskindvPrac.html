@@ -182,7 +182,8 @@
                     return this.products.sort(compare);
 
                 },
-                sortedprice(abcde) {
+              
+              sortedprice(abcde) {
                     function compare(a, b) {
                         if (a.price > b.price)
                             return 1;
@@ -228,7 +229,7 @@
 
                 },
                 submitForm() {
-                    alert('Order submitted!')
+                    alert('You are Successfully Order submitted!')
                 },
                 canAddToCart(product) {
                     return product.availableInventory > this.cartCount(product.id);
