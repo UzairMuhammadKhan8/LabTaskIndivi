@@ -56,7 +56,7 @@
                         </figure>
                         <p v-html="product.description"></p>
                         <p>Price: {{product.price}}</p>
-                        <p>Available stock: {{product.availableInventory}}</p>
+                        <p>Available stock: {{product.availableInventory}}-{{cartCount(product.id)}}</p>
 
 
                         <button @click="display = true" v-on:click='addToCart(product)' v-if='canAddToCart(product)'
