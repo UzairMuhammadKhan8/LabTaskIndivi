@@ -1,32 +1,56 @@
 <html>
 
 <head>
-    <script src="main.js"></script>
-    <title>Vue.js Pet Depot</title>
+
+    <script src="C://Users/hp/LabTaskIndivi/products.js"></script>
+
+
+    <title>Shopping</title>
+
     <script src="https://unpkg.com/vue"></script>
-    <script src="products.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <!-- // <script src="C://Users/hp/LabTaskIndivi/products.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        strong {
+            color: rgb(46, 114, 19);
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
         <header>
             <h1 v-text="sitename"></h1>
-            <button v-on:click='showCheckout' v-show="display">
+            <button v-on:click='showCheckout'  v-show="display" v-if="buttonvalue()" >
                 <span> {{cartItemCount}} </span>
 
                 <span class="fas fa-cart-plus"></span> Checkout
                 <!-- disable="disable" v-else -->
             </button>
+            <!-- Shopping ca -->
+            <div v-for="product in mysecondcart">
+                <h2 v-text="product.subject"></h2>
+                <figure>
+                    <img v-bind:src="product.image">
+                </figure>
+                <p>Description:{{product.description}}</p>
+                <p>Location:{{product.location}}</p>
+                <p>Price: {{product.price}}</p>
+                <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
+                <button v-on:click='removeproduct(product)' v-if='canAddToCart(product)'>Remove Product</button>
+
+
+                <button disabled="disable" v-else>Add to cart</button>
+
+            </div>
+
+
         </header>
         <main>
 
             <div v-if='showProduct'>
                 <table>
+
                     <tr>
                         <td><span>SortBySUBJECT <input type="radio" name="a"
                                     v-on:click="sortedsubject(products.subject)"></span>
@@ -48,15 +72,16 @@
 
                     <tr>
                         <td><span>ASCENDING<input type="radio" name="a"
-                                    v-on:click="sortedascending(products.subject)"></span>
+                                    v-on:click="sortingdesn(products.subject)"></span>
                         </td>
                     </tr>
                     <tr>
                         <td><span>DESCENDING<input type="radio" name="a"
-                                    v-on:click="sorteddesc(products.subject)"></span>
+                                    v-on:click="sortingasn(products.subject)"></span>
                         </td>
                     </tr>
                 </table>
+
 
                 <div v-for="product in products">
                     <h2 v-text="product.subject"></h2>
@@ -69,10 +94,10 @@
                     <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
 
 
-                    <button @click="display = true" v-on:click='addToCart(product)' v-if='canAddToCart(product)'
-                        v-if="addToCart.v-on:click">Add to cart</button>
+                    <button @click="display = true" v-on:click='addToCart(product)' v-if='canAddToCart(product)'>Add
+                        to cart</button>
 
-                    <button disabled="disabled" v-else>Add to cart</button>
+                    <button v-else>Add to cart</button>
 
 
 
@@ -82,21 +107,23 @@
                 <h2>Checkout</h2>
                 <p>
                     <strong>First Name:</strong>
-                    <input v-model.trim="order.firstName" />
+                    <input v-model.trim="order.firstName" placeholder="YOUR FIRST NAME!" required />
                 </p>
                 <p>
                     <strong>Last Name:</strong>
-                    <input v-model.trim="order.lastName" />
+                    <input v-model.trim="order.lastName" placeholder="YOUR LAST NAME!" />
                 </p>
                 <p>
-                    <strong>Address:</strong>
-                    <input v-model="order.phone" />
+                    <strong>Phone:</strong>
+                    <input v-model="order.phone" placeholder="YOUR PHONE NUMBER!" />
                 </p>
 
 
 
                 <h2>Order Information</h2>
-                <p>First Name: {{order.firstName}}</p>
+                <label>
+                    <p>First Name: {{order.firstName}}</p>
+                </label>
                 <p>Last Name: {{order.lastName}}</p>
                 <p>Address: {{order.phone}}</p>
 
@@ -111,24 +138,35 @@
             el: '#app',
             data: {
 
-                sitename: 'Vue.js Pet Depot',
+                sitename: 'SHOP ONLINE',
                 products: arr,
-                display: false,
 
+                display: false,
+                //display1: true,
                 cart: [],
+                mysecondcart: [],
                 showProduct: true,
+
                 order: {
                     firstName: '',
                     lastName: '',
                     phone: '',
+                   
                 },
 
             },
             methods: {
                 addToCart(product) {
                     this.cart.push(product.id);
+                    this.mysecondcart.push(product);
+
+
 
                 },
+
+
+
+
 
                 sortedProducts(abcd) {
                     function compare(a, b) {
@@ -156,6 +194,13 @@
                     return this.products.sort(compare);
 
                 },
+                // disple()
+                // {
+                //         if(button==onclick)
+                //         {
+                //             return display1 == none;
+                //         }
+                // },
                 sortedinventory(abcde) {
                     function compare(a, b) {
                         if (a.availableInventory > b.availableInventory)
@@ -182,8 +227,8 @@
                     return this.products.sort(compare);
 
                 },
-              
-              sortedprice(abcde) {
+
+                sortedprice(abcde) {
                     function compare(a, b) {
                         if (a.price > b.price)
                             return 1;
@@ -196,7 +241,7 @@
                     return this.products.sort(compare);
 
                 },
-                sortedascending(abcde) {
+                sortingdesn(abcde) {
                     function compare(a, b) {
                         if (a.subject < b.subject)
                             return -1;
@@ -209,7 +254,7 @@
                     return this.products.sort(compare);
 
                 },
-                sorteddesc(abcde) {
+                sortingasn(abcde) {
                     function compare(a, b) {
                         if (a.subject < b.subject)
                             return 1;
@@ -228,8 +273,35 @@
                     this.showProduct = this.showProduct ? false : true;
 
                 },
-                submitForm() {
-                    alert('You are Successfully Order submitted!')
+
+
+                submitForm(l, b, c) {
+                    if (this.order.firstName == "" && this.order.lastName == "" && this.order.phone == "") {
+
+                        return alert('PLEASE ENTER YOUR DETAILS FOR ORDERS')
+
+                    }
+                    if (this.order.firstName == "") {
+                        return alert('PLEASE ENTER YOUR NAME')
+                    }
+                    if (this.order.lastName == "") {
+                        return alert('PLEASE ENTER YOU LASTNAME')
+                    }
+                    if (this.order.phone == "") {
+                        return alert('PLEASE ENTER YOUR MOBILE NUM OR PHONE', { background: 'black' });
+                    }
+                    else {
+
+
+                        this.order.firstName = "";
+                        this.order.lastName = "";
+                        this.order.phone = "";
+
+                        return alert(' you are succesfully placed the order')
+
+
+                    }
+
                 },
                 canAddToCart(product) {
                     return product.availableInventory > this.cartCount(product.id);
@@ -245,6 +317,25 @@
                         }
                     }
                     return count;
+
+
+                },
+
+                buttonvalue() {
+                    if (this.cart.length > 0) {
+                        return true;
+                    } else {
+
+                        return false;
+
+                    }
+                },
+
+
+
+                removeproduct(product) {
+                    this.mysecondcart.pop(product);
+                    this.cart.pop(product);
 
                 }
             },
