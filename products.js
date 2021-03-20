@@ -2,7 +2,7 @@ let arr = [
     {
       "id": 1001,
       "subject": "Lorax",
-      "description": "The Lorax is a children's book written by Dr. Seuss and first published in 1971.",
+      "description": "The Lorax is a children's book written by  Dr. Seuss and first published in 1971.",
       "location": "DUBAI!",
       "price": 20.00,
       "image": "C://Users/hp/LabTaskIndivi/images/lorax.jpg",

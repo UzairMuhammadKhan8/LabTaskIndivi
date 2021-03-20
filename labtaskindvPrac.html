@@ -21,66 +21,81 @@
     <div id="app">
         <header>
             <h1 v-text="sitename"></h1>
-            <button v-on:click='showCheckout'  v-show="display" v-if="buttonvalue()" >
+            <button v-on:click='showCheckout' v-show="display" v-if="buttonvalue()">
                 <span> {{cartItemCount}} </span>
 
                 <span class="fas fa-cart-plus"></span> Checkout
                 <!-- disable="disable" v-else -->
+
+
             </button>
+            <br style="border:lime;">
             <!-- Shopping ca -->
-            <div v-for="product in mysecondcart">
-                <h2 v-text="product.subject"></h2>
-                <figure>
-                    <img v-bind:src="product.image">
-                </figure>
-                <p>Description:{{product.description}}</p>
-                <p>Location:{{product.location}}</p>
-                <p>Price: {{product.price}}</p>
-                <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
-                <button v-on:click='removeproduct(product)' v-if='canAddToCart(product)'>Remove Product</button>
+            <div row>
+                <div class="md">
+
+                    <span style="display: inline-flex;">
+                        <div v-for="product in mysecondcart">
+                            <h5 style="color: rgb(21, 26, 21); font-family: Arial, Helvetica, sans-serif;">YOUR ADDED
+                                PRODUCTS</h5>
+                            <h2 v-text="product.subject"></h2>
+                            <figure>
+                                <img v-bind:src="product.image">
+                                <span>
+                            </figure>
+                            
+                                <p>Description:{{product.description}}</p></span>
+                            
+                            <p>Location:{{product.location}}</p>
+                            <p>Price: {{product.price}}</p>
+                            <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
+                            <button v-on:click='removeproduct(product)' v-if='canAddToCart(product)'>Remove
+                                Product</button>
 
 
-                <button disabled="disable" v-else>Add to cart</button>
-
+                            <button disabled="disable" v-else>Add to cart</button>
+                        </div>
+                    </span>
+                </div>
             </div>
-
+            <br>
 
         </header>
         <main>
 
             <div v-if='showProduct'>
-                <table>
 
-                    <tr>
-                        <td><span>SortBySUBJECT <input type="radio" name="a"
-                                    v-on:click="sortedsubject(products.subject)"></span>
-                        </td>
-                    <tr>
-                        <td><span>SortByPrice<input type="radio" name="a"
-                                    v-on:click="sortedprice(products.price)"></span>
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td><span>SortByInventory<input type="radio" name="a"
-                                    v-on:click="sortedinventory(products.availableInventory)"></span></td>
-                    </tr>
-                    <tr>
-                        <td><span>SortBYLocation<input type="radio" name="a"
-                                    v-on:click="sortedlocation(products.location)"></span></td>
-                    </tr>
+                <ul>
+                    <li>SortBySUBJECT <input type="radio" name="a" v-on:click="sortedsubject(products.subject)">
+                    </li>
+                </ul>
 
-                    <tr>
-                        <td><span>ASCENDING<input type="radio" name="a"
-                                    v-on:click="sortingdesn(products.subject)"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span>DESCENDING<input type="radio" name="a"
-                                    v-on:click="sortingasn(products.subject)"></span>
-                        </td>
-                    </tr>
-                </table>
+                <ul>
+                    <li>SortByPrice<input type="radio" name="a" v-on:click="sortedprice(products.price)"></li>
+                </ul>
+
+
+                <ul>
+                    <li>SortByInventory<input type="radio" name="a"
+                            v-on:click="sortedinventory(products.availableInventory)"></li>
+                </ul>
+
+                <ul>
+                    <li>SortBYLocation<input type="radio" name="a" v-on:click="sortedlocation(products.location)"></li>
+                </ul>
+
+
+
+                <ul>
+                    <li>ASCENDING<input type="radio" name="a" v-on:click="sortingdesn(products.subject)"></li>
+                </ul>
+
+                <ul>
+                    <li>DESCENDING<input type="radio" name="a" v-on:click="sortingasn(products.subject)">
+                    </li>
+                </ul>
+
 
 
                 <div v-for="product in products">
@@ -151,7 +166,7 @@
                     firstName: '',
                     lastName: '',
                     phone: '',
-                   
+
                 },
 
             },
@@ -194,13 +209,7 @@
                     return this.products.sort(compare);
 
                 },
-                // disple()
-                // {
-                //         if(button==onclick)
-                //         {
-                //             return display1 == none;
-                //         }
-                // },
+                
                 sortedinventory(abcde) {
                     function compare(a, b) {
                         if (a.availableInventory > b.availableInventory)
@@ -329,6 +338,16 @@
                         return false;
 
                     }
+                },
+                removeproductfrominve() {
+                    if (this.cart.length <= 0) {
+                        return true;
+                    }
+                    else {
+                        false;
+                    }
+
+
                 },
 
 
