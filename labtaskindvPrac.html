@@ -9,7 +9,8 @@
 
     <script src="https://unpkg.com/vue"></script>
     <!-- // <script src="C://Users/hp/LabTaskIndivi/products.js"></script> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <style>
         strong {
             color: rgb(46, 114, 19);
@@ -19,132 +20,137 @@
 
 <body>
     <div id="app">
-        <header>
-            <h1 v-text="sitename"></h1>
-            <button v-on:click='showCheckout' v-show="display" v-if="buttonvalue()">
-                <span> {{cartItemCount}} </span>
-
-                <span class="fas fa-cart-plus"></span> Checkout
-                <!-- disable="disable" v-else -->
-
-
-            </button>
-            <br style="border:lime;">
-            <!-- Shopping ca -->
-            <div row>
-                <div class="md">
-
-                    <span style="display: inline-flex;">
-                        <div v-for="product in mysecondcart">
-                            <h5 style="color: rgb(21, 26, 21); font-family: Arial, Helvetica, sans-serif;">YOUR ADDED
-                                PRODUCTS</h5>
-                            <h2 v-text="product.subject"></h2>
-                            <figure>
-                                <img v-bind:src="product.image">
-                                <span>
-                            </figure>
-                            
-                                <p>Description:{{product.description}}</p></span>
-                            
-                            <p>Location:{{product.location}}</p>
-                            <p>Price: {{product.price}}</p>
-                            <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
-                            <button v-on:click='removeproduct(product)' v-if='canAddToCart(product)'>Remove
-                                Product</button>
-
-
-                            <button disabled="disable" v-else>Add to cart</button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#" v-text="sitename"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="col-md-12" style="display: inline-block;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Cart ({{cartItemCount}})
+                        </a>
+                        <ul  style="display: inline-flex;">
+                            <li v-for="product in mysecondcart" style="width: 500px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <figure>
+                                                <img v-bind:src="product.image" >
+                                            </figure>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 v-text="product.subject"></h5>
+                                            <p class="cart">Description:{{product.description}}</p>
+                                            <p class="cart">Location:{{product.location}}</p>
+                                            <p class="cart">Price: {{product.price}}</p>
+                                            <p class="cart">Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-danger" v-on:click='removeproduct(product)'>remove</button>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" v-on:click='showCheckout'  v-show="display" v-if="buttonvalue()" style="background-color: rgb(7, 7, 7); color:white; ">{{cartItemCount}} Checkout</a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div class="container" v-if='showProduct'>
+              <div class="row"> 
+                <div class="col">
+                    <div class="form-check">
+                        <button class="btn btn-danger light" v-on:click='sortedsubject(sortedsubject)'>Sort By Subject</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <button class="btn btn-danger light" v-on:click='sortedprice(products.price)'>Sort By Price</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <button class="btn btn-danger light" v-on:click='sortedinventory(products.availableInventory)'>Sort By Inventory</button>   
+                       
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <button class="btn btn-danger light" v-on:click='sortedlocation(products.location)'>Sort By Location</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <button class="btn btn-danger light" v-on:click='sortingasn(products.subject)'>Ascending</button>
+ 
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <button class="btn btn-danger light" v-on:click='sortingdsn(products.subject)'>Descending</button>
+ 
+                        
+                        
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-3" v-for="product in products">
+                      <br>
+                    <div class="card" style="width: 100%;">
+                        <img v-bind:src="product.image" class="card-img-top" alt="..." style="height:250px;object-fit: cover">
+                        <div class="card-body">
+                          <h5 class="card-title" v-text="product.subject"></h5>
+                          <p class="card-text" style="font-size: 13px; height: 50px;">{{product.description}}</p>
+                          <p class="card-text">Location: {{product.location}}</p>
+                          <p class="card-text">Price: {{product.price}}</p>
+                          <p class="card-text">Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p> -->
+                          <!-- <p>Location:{{product.location}}</p> -->
+                          <!-- <p>Price: {{product.price}}</p>
+                          <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} !</p> -->
+                          <a href="#" class="btn btn-primary"  @click="display = true" v-on:click='addToCart(product)' v-if='canAddToCart(product)'>Add to cart</a> 
+                          <button disabled="disable" v-else>Add to cart</button>
                         </div>
-                    </span>
-                </div>
-            </div>
-            <br>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="container" v-else>
+              <div class="row">
+                  <div class="col-md-12">
+                    <h2>Checkout</h2>
+                    <p>
+                        <strong>First Name:</strong>
+                        <input class="form-control" v-model.trim="order.firstName" placeholder="YOUR FIRST NAME!" required />
+                    </p>
+                    <p>
+                        <strong>Last Name:</strong>
+                        <input class="form-control" v-model.trim="order.lastName" placeholder="YOUR LAST NAME!" />
+                    </p>
+                    <p>
+                        <strong>Phone:</strong>
+                        <input class="form-control" v-model="order.phone" placeholder="YOUR PHONE NUMBER!" />
+                    </p>
+                    <h2>Order Information</h2>
+                    <label>
+                        <p>First Name: {{order.firstName}}</p>
+                    </label>
+                    <p>Last Name: {{order.lastName}}</p>
+                    <p>Address: {{order.phone}}</p>
+    
+                    <button v-on:click="submitForm" class="btn btn-primary">Place Order</button>
+                  </div>
+              </div>
 
-        </header>
-        <main>
-
-            <div v-if='showProduct'>
-
-
-                <ul>
-                    <li>SortBySUBJECT <input type="radio" name="a" v-on:click="sortedsubject(products.subject)">
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>SortByPrice<input type="radio" name="a" v-on:click="sortedprice(products.price)"></li>
-                </ul>
-
-
-                <ul>
-                    <li>SortByInventory<input type="radio" name="a"
-                            v-on:click="sortedinventory(products.availableInventory)"></li>
-                </ul>
-
-                <ul>
-                    <li>SortBYLocation<input type="radio" name="a" v-on:click="sortedlocation(products.location)"></li>
-                </ul>
-
-
-
-                <ul>
-                    <li>ASCENDING<input type="radio" name="a" v-on:click="sortingdesn(products.subject)"></li>
-                </ul>
-
-                <ul>
-                    <li>DESCENDING<input type="radio" name="a" v-on:click="sortingasn(products.subject)">
-                    </li>
-                </ul>
-
-
-
-                <div v-for="product in products">
-                    <h2 v-text="product.subject"></h2>
-                    <figure>
-                        <img v-bind:src="product.image">
-                    </figure>
-                    <p>Description:{{product.description}}</p>
-                    <p>Location:{{product.location}}</p>
-                    <p>Price: {{product.price}}</p>
-                    <p>Spaces: only {{product.availableInventory - cartCount(product.id)}} are left!</p>
-
-
-                    <button @click="display = true" v-on:click='addToCart(product)' v-if='canAddToCart(product)'>Add
-                        to cart</button>
-
-                    <button v-else>Add to cart</button>
-
-
-
-                </div>
-            </div>
-            <div v-else>
-                <h2>Checkout</h2>
-                <p>
-                    <strong>First Name:</strong>
-                    <input v-model.trim="order.firstName" placeholder="YOUR FIRST NAME!" required />
-                </p>
-                <p>
-                    <strong>Last Name:</strong>
-                    <input v-model.trim="order.lastName" placeholder="YOUR LAST NAME!" />
-                </p>
-                <p>
-                    <strong>Phone:</strong>
-                    <input v-model="order.phone" placeholder="YOUR PHONE NUMBER!" />
-                </p>
-
-
-
-                <h2>Order Information</h2>
-                <label>
-                    <p>First Name: {{order.firstName}}</p>
-                </label>
-                <p>Last Name: {{order.lastName}}</p>
-                <p>Address: {{order.phone}}</p>
-
-                <button v-on:click="submitForm">Place Order</button>
-            </div>
-        </main>
+          </div>
     </div>
 
     </div>
@@ -153,7 +159,7 @@
             el: '#app',
             data: {
 
-                sitename: 'SHOP ONLINE',
+                sitename: 'BOOKS ONLINE',
                 products: arr,
 
                 display: false,
@@ -166,7 +172,7 @@
                     firstName: '',
                     lastName: '',
                     phone: '',
-
+                   
                 },
 
             },
@@ -178,9 +184,6 @@
 
 
                 },
-
-
-
 
 
                 sortedProducts(abcd) {
@@ -209,7 +212,13 @@
                     return this.products.sort(compare);
 
                 },
-                
+                // disple()
+                // {
+                //         if(button==onclick)
+                //         {
+                //             return display1 == none;
+                //         }
+                // },
                 sortedinventory(abcde) {
                     function compare(a, b) {
                         if (a.availableInventory > b.availableInventory)
@@ -250,7 +259,7 @@
                     return this.products.sort(compare);
 
                 },
-                sortingdesn(abcde) {
+                sortingasn(abcde) {
                     function compare(a, b) {
                         if (a.subject < b.subject)
                             return -1;
@@ -263,7 +272,7 @@
                     return this.products.sort(compare);
 
                 },
-                sortingasn(abcde) {
+                sortingdsn(abcde) {
                     function compare(a, b) {
                         if (a.subject < b.subject)
                             return 1;
@@ -339,11 +348,13 @@
 
                     }
                 },
-                removeproductfrominve() {
-                    if (this.cart.length <= 0) {
+                removeproductfrominve()
+                {
+                    if(this.cart.length <= 0)
+                    {
                         return true;
                     }
-                    else {
+                    else{
                         false;
                     }
 

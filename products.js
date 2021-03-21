@@ -22,7 +22,7 @@ let arr = [
     {
       "id": 1003,
       "subject": "The Happy Day",
-      "description": "The Happy Day is a 1949 picture book written by Ruth Krauss and illustrated by Marc Simont. In the book woodland creatures awake to find that it is spring.!",
+      "description": "The Happy Day is a 1949 picture book written by Ruth Krauss and illustrated by Marc Simont.!",
       "location": "DUBAI!",
       "price": 2.99,
       "image": "C://Users/hp/LabTaskIndivi/images/happyday.jpg",
@@ -31,8 +31,8 @@ let arr = [
     },
     {
       "id": 1004,
-      "subject": "Litte Island",
-      "description": "he Little Island is a book by Margaret Wise Brown under the pseudonym Golden MacDonald and illustrated by Leonard Weisgard. !",
+      "subject": "Little Island",
+      "description": "he Little Island is a book by Margaret Wise Brown. !",
       "location": "DUBAI!",
       "price": 7.99,
       "image": "C://Users/hp/LabTaskIndivi/images/littleisland.jpg",
@@ -96,7 +96,7 @@ let arr = [
         "subject": "Don't Let the Pigeon Drive the Bus!",
         "description": "Don't Let the Pigeon Drive the Bus! is a children's picture book by Mo Willems.!",
         "location": "AJMAN",
-        "price": 7.99,
+        "price": 7,
         "image": "C://Users/hp/LabTaskIndivi/images/pigeondrive.jpg",
         "availableInventory": 11,
         "rating": 5
